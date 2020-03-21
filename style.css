@@ -1,0 +1,8 @@
+main {
+  width: 50%;
+  margin: 0 auto;
+}
+
+main h1 p {
+  line-height: 0.5em;
+}
