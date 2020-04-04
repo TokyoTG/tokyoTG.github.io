@@ -1,8 +1,183 @@
-main {
-  width: 50%;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
+    helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
+    segoe ui emoji, segoe ui symbol, noto color emoji;
+  line-height: 1.5;
+}
+
+.container {
+  overflow: auto;
+  background-color: #062863;
+  background-image: url("./img/1.png"), url("./img/2.png"), url("./img/3.png"),
+    url("./img/last.png");
+  background-size: 15%, 15%, 15%, 15%;
+  background-position: left -1% top -15%, right -7.5% top -1%,
+    left -5% bottom -10%, right -5% bottom -5%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  height: 100vh;
+}
+
+/* background-color: #062863; */
+/* background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAAGXRFW…DDAgDAsAAAwwIAwLAAADAsAMCwAAAwLAAADAsAUuL/BRgAbdjMWJwXo90AAAAASUVORK5CYII=),
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAAGXRFW…CwAAAQFgAAwgIAhAUAgLAAABAWACAsAACEBQDQAf5fgAEAyw11IJv0GU8AAAAASUVORK5CYII=),
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAAGXRFW…IAAgsAgQUABBYAEFgACCwAILAAgMACQGABAIEFAD35nwADALRKT8CBeskNAAAAAElFTkSuQmCC),
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAAGXRFW…CGBQCAYQEAYFgAgGEBAGBYAAAYFgBgWAAAGBYAwL75gwADAJg9Yl+p8U3/AAAAAElFTkSuQmCC);
+  background-size: 15%, 15%, 15%, 15%;
+  background-position: left -1% top -15%, right -7.5% top -1%,
+    left -5% bottom -10%, right -5% bottom -5%; */
+
+.logo {
+  width: 200px;
+  padding: 48px 0;
   margin: 0 auto;
 }
 
-main h1 p {
-  line-height: 0.5em;
+.form-container {
+  max-height: 862px;
+  position: relative;
+  overflow: auto;
+  background-color: white;
+  padding: 2rem;
+  margin: 0 auto;
+  width: 488px;
+  border-top-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+}
+
+.formTitle h1 {
+  font-size: 1.25rem;
+  font-family: U8, sans-serif;
+  font-weight: 700;
+  color: #083e9e;
+}
+.formTitle p {
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+.formTitle {
+  text-align: center;
+}
+
+form label {
+  font-weight: 700;
+  color: #4a5568;
+  line-height: 2;
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+  font-family: U8, sans-serif;
+}
+
+form p {
+  margin-bottom: 2rem;
+}
+
+form {
+  margin-top: 2rem;
+  margin-bottom: 0;
+}
+
+#select {
+  padding: 0.8rem 0.5rem 0.8rem 0.75rem;
+  background-color: #edf2f7;
+  position: relative;
+  height: 52px;
+  width: 95%;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+}
+#select svg {
+  position: absolute;
+  width: 10%;
+  fill: #b0bec5;
+  right: 10px;
+  top: 15px;
+}
+#select span {
+  display: inline-block;
+  width: 85%;
+  border-right: 1px solid #b0bec5;
+}
+
+form input,
+form select {
+  padding: 0.75rem 0.5rem 0.75rem 0.75rem;
+  background-color: #edf2f7;
+  line-height: inherit;
+  font-size: 100%;
+  color: #1a202c;
+  border-radius: 0.25rem;
+  border: 0 solid #e2e8f0;
+  width: 95%;
+}
+form select {
+  border-radius: 0.5rem;
+}
+
+form input::placeholder {
+  color: #b0bec5;
+}
+
+form button {
+  background-color: rgb(8, 62, 158);
+  width: 95%;
+  color: white;
+  padding: 1.25rem 2.5rem 1rem 2.5rem;
+  font-size: 0.875rem;
+  font-family: U8, sans-serif;
+  text-align: center;
+  font-weight: 700;
+  border: 0 solid #e2e8f0;
+  text-transform: uppercase;
+  border-radius: 0.75rem 0.75rem 0.75rem 0;
+}
+
+.signin a {
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-family: Karla, sans-serif;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 0.25rem 0.75rem;
+}
+.signin a:hover {
+  color: #b0bec5;
+}
+.signin {
+  margin-top: 32px;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+#selectOptions {
+  max-height: 200px;
+  display: none;
+  z-index: 100;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  position: absolute;
+  overflow: auto;
+  width: 75%;
+}
+
+#selectOptions p {
+  padding: 10px 15px;
+  margin: 0;
+}
+
+#selectOptions .selected {
+  background: #0091ea;
+  color: white;
+}
+
+#selectOptions p:hover {
+  background: #b3e5fc;
+}
+
+#selectOptions .selected:hover {
+  background: #0091ea;
 }
