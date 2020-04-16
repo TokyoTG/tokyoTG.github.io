@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        padding: 0;
+        margin: 0;
+    }
+
+    body {
+        background: rgb(145, 187, 102);
+        background: linear-gradient(83deg, rgba(145, 187, 102, 0.5219129888283438) 9%, rgba(55, 71, 79, 1) 57%,
+                rgba(102, 187, 106, 0.8132295154389881) 99%);
+    }
+
+    #side,
+    #main {
+        background: white;
+        line-height: 2;
+        color: #37474f;
+        border-radius: 3px;
+    }
+
+    #main {
+        width: 95%;
+        margin: 15px auto;
+        padding: 15px 10px;
+        padding-left: 20px;
+
+    }
+
+    #main div p span {
+        background: #66bb6a;
+
+        display: inline-block;
+        border-radius: 3px;
+        font-weight: bold;
+        padding: 2px 10px;
+    }
+
+    #main div {
+        padding-bottom: 10px;
+        border-bottom: .5px solid;
+    }
+
+    #side {
+        position: absolute;
+        top: 0;
+        width: 0;
+        overflow-x: hidden;
+        transition: .3s;
+    }
+
+
+    .img-contianer {
+        max-height: 250px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .img-contianer h1 {
+        position: absolute;
+        right: 10px;
+        font-size: 1.5em;
+        top: 10px;
+        cursor: pointer;
+    }
+
+    .img-contianer h1:hover {
+        color: #66bb6a;
+    }
+
+    .img-contianer h2 {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: white;
+        filter: contrast(1.5);
+    }
+
+    .img-contianer img {
+        width: 100%;
+
+    }
+
+    .img-contianer img:hover {
+        filter: contrast(.5);
+    }
+
+    #details {
+        padding: 10px 15px;
+    }
+
+    #skills {
+        padding: 10px 15px;
+    }
+
+    #skills p {
+        padding: 5px 10px;
+        background: #66bb6a;
+        border-radius: 3px;
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+
+    #skills h3 {
+        margin-bottom: 10px;
+    }
+
+    #menuIcon {
+        font-size: 1.2em;
+        display: block;
+        margin-left: 10px;
+        padding: 10px 15px;
+    }
+
+    #footer {
+        padding: 15px 10px;
+        overflow: hidden;
+        color: #66bb6a;
+        background: #37474f;
+    }
+
+    #footer form input {
+        height: 50px;
+    }
+
+    #footer form {
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    #footer form p {
+        margin: 10px 0;
+    }
+
+    #footer form p label {
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    #footer form input,
+    #footer form textarea,
+    #footer form button {
+        width: 80%;
+        border: none;
+        font-size: 1em;
+        border-radius: 5px;
+        resize: none;
+        max-width: 350px;
+    }
+
+    #footer form button {
+        color: #37474f;
+        padding: 10px 15px;
+        border: none;
+        font-size: 1.2em;
+        border-radius: 50px;
+        background: #66bb6a;
+    }
+
+    textarea,
+    input {
+        padding: 10px 15px;
+    }
+
+    #footer ul {
+        margin: 15px;
+    }
+
+    #footer ul h3 {
+        margin-top: 20px;
+    }
+
+    #footer ul li a {
+        color: white;
+        display: inline-block;
+        margin-left: 10px;
+        transition: .3s;
+        text-decoration: none;
+        padding: 10px 15px;
+    }
+
+    #footer ul li a:hover {
+        text-decoration: underline;
+        color: #66bb6a;
+    }
+
+    #footer ul li {
+        display: inline;
+
+    }
+
+    @media only screen and (min-width: 750px) {
+        #side {
+            position: static !important;
+            /* display: block; */
+            width: unset !important;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            height: unset !important;
+        }
+
+        #footer ul h3 {
+            margin: unset;
+        }
+
+        #footer ul li {
+            display: block;
+        }
+
+
+        #footer {
+            display: grid;
+            grid-template-columns: 66.666% 30%;
+        }
+
+
+        .img-contianer h1 {
+            display: none;
+        }
+
+        #main {
+            margin: unset;
+            margin-bottom: 15px;
+            margin-left: 20px;
+        }
+
+        #menuIcon {
+
+            display: none;
+        }
+
+
+        .container {
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: 30% 66.666%;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <span id="menuIcon">&#9776; Profile Details</span>
+        <div id="side">
+            <div class="img-contianer">
+                <img src="./img/profile-image.jpg" alt="Profile Image" height="450">
+                <h2>Tokyo TG</h2>
+                <h1 id="close">X</h1>
+            </div>
+            <div id="details">
+                <h3>&#9776; Profile Summary</h3>
+                <p>
+                    Fullstack web developer with nothing to loose
+                </p>
+                <h3>&#9775; Bio Data</h3>
+                <p>
+                    Name: Toyeeb Ganiu
+                </p>
+                <p>
+                    State of Origin: Kwara
+                </p>
+                <p>
+                    Home Town: Ilorin
+                </p>
+                <p>
+                    Date of Birth:18-01-1995
+                </p>
+                <p>
+                    Address: 19, Rufai Street, Ajegunle Apapa Lagos.
+                </p>
+                <p>
+                    Occupation: Web Developer
+                </p>
+                <p>
+                    Slack ID: Toyeeb Ganiu
+                </p>
+            </div>
+            <div id="skills">
+                <h3>&#9885; Skills</h3>
+                <p>Javascript</p>
+                <p>PHP</p>
+                <p>JQUERY</p>
+                <p>Vue JS</p>
+                <p>CSS</p>
+                <p>HMTL</p>
+                <p>MySQL</p>
+                <h3>&#9825; Hobbies</h3>
+                <p>Reading</p>
+                <p>Research</p>
+                <p>Learning</p>
+                <p>Browsing Internet</p>
+                <p>Games</p>
+            </div>
+        </div>
+
+        <div id="main">
+            <!-- <i class="fa fa-home"></i>
+            <i class="fa fa-calendar fa-fw w3-margin-right"></i>
+            <i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>
+            <i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>
+            <i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>
+
+            <i class="fa fa-envelope"></i>
+            <i class="fa fa-phone"></i> -->
+            <h1>Work Experience</h1>
+            <div>
+                <h3>Front End Developer / StartNG.com</h3>
+                <p>Jan 2017 - <span>Current</span> </p>
+                <p>
+                    Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est
+                    reprehenderit
+                    sunt hic. Nulla
+                    tempora soluta ea et odio, unde doloremque repellendus iure, iste.
+
+                </p>
+            </div>
+            <div>
+
+                <h3>Web Developer / StartNG.com</h3>
+                <p>Jan 2015 - Dec 2016 </p>
+                <p>
+                    Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est
+                    reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.
+
+                </p>
+            </div>
+            <div>
+                <h3>Back-End Developer / StartNG.com</h3>
+                <p>Jan 2013 - Dec 2014 </p>
+                <p>
+                    Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est
+                    reprehenderit
+                    sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.
+
+                </p>
+            </div>
+
+            <h1>Education</h1>
+            <h3>University of Ilorin</h3>
+            <p>Sept 2013 - Oct 2018 </p>
+            <p>
+                Bachelor of Science(BSc) in Surveying and Geo-Informatics
+            </p>
+            <h3>Reservation Secondary School Tolu</h3>
+            <p>Sept 2007 - Sept 2013 </p>
+            <p>
+                West African Secondary School Certificte (WASSCE)
+            </p>
+        </div>
+
+    </div>
+    <footer id="footer">
+
+        <form action="POST">
+            <h3>Contact Me</h3>
+            <p>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder=" Please enter your email">
+            </p>
+            <p>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" rows="5" placeholder="Please enter message"></textarea>
+            </p>
+            <button type="submit">Send</button>
+        </form>
+        <ul>
+            <h3>Social</h3>
+            <li>
+                <a href="https://web.facebook.com/tboynoni.toyeeb">Facebook</a>
+            </li>
+            <li>
+                <a href="https://twitter.com/TG_Tokyo">Twiter</a>
+            </li>
+            <li>
+                <a href="https://github.com/TokyoTG/">GitHub</a>
+            </li>
+            <li>
+                <a href="tel:+2347069732084">Phone</a>
+            </li>
+        </ul>
+    </footer>
+    <script>
+        let menu = document.getElementById('menuIcon');
+        let sideBar = document.getElementById('side');
+        let closer = document.getElementById('close');
+        menu.addEventListener('click', function (e) {
+            e.preventDefault();
+            sideBar.style.width = '400px';
+            sideBar.style.height = '100vh';
+        })
+        closer.addEventListener('click', function (e) {
+            e.preventDefault();
+            sideBar.style.width = '0px';
+            sideBar.style.height = 'unset';
+        })
+        window.addEventListener('click', function (e) {
+            e.preventDefault()
+            if (e.target && closer && e.target !== sideBar && e.target !== menu) {
+                sideBar.style.width = '0px';
+                sideBar.style.height = 'unset';
+            }
+        })
+    </script>
+</body>
+
+</html>
