@@ -401,16 +401,16 @@
         <ul>
             <h3>Social</h3>
             <li>
-                <a href="https://web.facebook.com/tboynoni.toyeeb">Facebook</a>
+                <a href="https://web.facebook.com/tboynoni.toyeeb" target="_blank">Facebook</a>
             </li>
             <li>
-                <a href="https://twitter.com/TG_Tokyo">Twiter</a>
+                <a href="https://twitter.com/TG_Tokyo" target="_blank">Twiter</a>
             </li>
             <li>
-                <a href="https://github.com/TokyoTG/">GitHub</a>
+                <a href="https://github.com/TokyoTG/" target="_blank">GitHub</a>
             </li>
             <li>
-                <a href="tel:+2347069732084">Phone</a>
+                <a href="tel:+2347069732084" target="_blank">Phone</a>
             </li>
         </ul>
     </footer>
@@ -420,7 +420,7 @@
         let closer = document.getElementById('close');
         menu.addEventListener('click', function (e) {
             e.preventDefault();
-            sideBar.style.width = '400px';
+            sideBar.style.width = '360px';
             sideBar.style.height = '100vh';
         })
         closer.addEventListener('click', function (e) {
@@ -428,13 +428,13 @@
             sideBar.style.width = '0px';
             sideBar.style.height = 'unset';
         })
-        window.addEventListener('click', function (e) {
-            e.preventDefault()
+        window.onclick = function (e) {
+
             if (e.target && closer && e.target !== sideBar && e.target !== menu) {
                 sideBar.style.width = '0px';
                 sideBar.style.height = 'unset';
             }
-        })
+        }
     </script>
 </body>
 
