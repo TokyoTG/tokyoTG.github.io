@@ -65,6 +65,9 @@
         max-height: 250px;
         width: 100%;
         overflow: hidden;
+        background: rgb(145, 187, 102);
+        background: linear-gradient(83deg, rgba(145, 187, 102, 0.5219129888283438) 9%, rgba(55, 71, 79, 1) 57%,
+                rgba(102, 187, 106, 0.8132295154389881) 99%);
         position: relative;
     }
 
@@ -77,20 +80,23 @@
     }
 
     .img-contianer h1:hover {
-        color: #66bb6a;
+        font-weight: bold;
     }
 
     .img-contianer h2 {
         position: absolute;
         bottom: 10px;
         left: 10px;
+
         color: white;
         filter: contrast(1.5);
     }
 
     .img-contianer img {
-        width: 100%;
+        /* width: 100%; */
+        display: block;
 
+        margin: 0 auto;
     }
 
     .img-contianer img:hover {
