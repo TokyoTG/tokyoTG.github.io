@@ -1,4 +1,4 @@
-function getModulusArray(num) {
+function modulusCollector(num) {
   let i = 1;
   let result = "";
   let arr = [];
