@@ -35,3 +35,6 @@ function modulusCollector(num) {
   }
   return arr;
 }
+
+modulusCollector(100);
+modulusCollector(500);
