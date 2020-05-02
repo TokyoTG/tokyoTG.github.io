@@ -113,7 +113,7 @@ function getAnswer() {
 function resetgame() {
   correctDisplay.textContent = numberOfCorrect;
   modal.style.display = "block";
-  modalContent.textContent = `Score: ${numberOfCorrect}`;
+  modalContent.textContent = `You Score: ${numberOfCorrect}`;
   currentIndex = 0;
   numberOfCorrect = 0;
   questionsLeft = 5;
