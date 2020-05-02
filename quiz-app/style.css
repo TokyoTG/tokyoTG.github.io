@@ -1,0 +1,184 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+  color: #37474f;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+#top {
+  width: 100%;
+  padding: 15px;
+
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  background: white;
+  /* text-align: center; */
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#top h2 {
+  margin-bottom: 10px;
+}
+
+#top p {
+  float: right;
+  font-weight: 700;
+  padding: 5px;
+  margin-right: 15px;
+}
+
+#questions {
+  border-radius: 0.3em;
+  padding: 15px 20px;
+  width: 90%;
+  text-align: center;
+  max-width: 600px;
+  background-color: #e9ecef;
+  margin: 0 auto;
+}
+
+#questions p {
+  font-size: 1.2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+#questions li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+#questions ul {
+  background: white;
+  margin-bottom: 20px;
+  border-radius: 0.3em;
+}
+
+#questions li:hover {
+  background: lightblue;
+}
+
+#buttons {
+  margin: 15px 0;
+}
+
+#questions li.selected {
+  color: white;
+  background: darkslategray;
+}
+
+#questions li.correct {
+  color: white;
+  background: lightgreen;
+}
+
+#questions li.incorrect {
+  color: white;
+  background: lightcoral;
+}
+
+#submit,
+#next {
+  padding: 10px 15px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#submit {
+  background: blue;
+}
+
+#next {
+  background: green;
+}
+
+#submit.disabled,
+#next.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#instructions {
+  color: black;
+  padding: 10px 25px;
+  width: 90%;
+  background: #00bcd4;
+  max-width: 650px;
+  border-radius: 10px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+#instructions h2 {
+  margin-top: 15px;
+  text-align: center;
+}
+
+#instructions li {
+  list-style-type: square;
+  margin: 15px;
+}
+
+/* 
+MODAL
+
+*/
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  font-size: 1.1em;
+  padding: 20px;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 1px solid #888;
+  width: 500px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-content p a,
+#instructions p a {
+  font-size: 1.1em;
+  color: #607d8b;
+}
+
+.modal-content p a:hover,
+#instructions p a:hover {
+  color: #01579b;
+  text-decoration: none;
+}
