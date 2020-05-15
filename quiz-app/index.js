@@ -105,6 +105,7 @@ function displayCorrectAnswer(correctAnswer) {
 //gets the answer the player selected
 function getAnswer() {
   submitAnswer.classList.remove("disabled");
+  submitAnswer.removeAttribute('disabled');
   answerElement = selectAnswer();
   selectedAnswer = answerElement.textContent;
 }
@@ -119,4 +120,44 @@ function resetgame() {
   questionsLeft = 5;
   correctDisplay.textContent = numberOfCorrect;
   numOfQuestions.textContent = questionsLeft;
+}
+
+function countDownTime(timediff){ 
+  var minutes = Math.floor((timediff % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((timediff % (1000 * 60)) / 1000);
+  let timeDisplay = document.getElementById('timer');
+  timeDisplay.innerHTML = '';
+  timeDisplay.innerHTML = `${minutes}:${seconds}`
+
+}
+function getTimeDiff(){
+  let startTime = new Date();
+  let stopTime = startTime.getTime() + 60000 ;
+  let timediff = stopTime - startTime;
+  return timediff
+}
+
+ let timediff = getTimeDiff();
+
+function displayTime(){
+  clearInterval()
+
+  setTimeout(function(){
+    clearInterval(timer)
+  },61000)
+
+}
+
+function clearLoop(){
+  clearInterval(timer)
+}
+
+function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent('on' + etype);
+  } else {
+    var evObj = document.createEvent('Events');
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
 }

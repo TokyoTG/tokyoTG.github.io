@@ -1,100 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div>
-        <div id="top">
-            <h2>
-                Tokyo Quiz App
-            </h2>
-            <p>
-                Number of Correct <span id="counter">0</span> |
-                Questions left <span id="numOfQuestion">10</span>
-            </p>
+      <div id="top">
+        <h2>
+          Tokyo Quiz App
+        </h2>
+        <p>
+          Number of Correct <span id="counter">0</span> | Questions left
+          <span id="numOfQuestion">10</span> | Timer <span id="timer"></span>
+        </p>
+      </div>
+      <div id="questions">
+        <p id="Currentquestion"></p>
+        <ul id="answers"></ul>
+        <div id="buttons">
+          <button id="submit" class="disabled" disabled>Submit</button>
+          <button id="next" class="disabled" disabled>Next</button>
         </div>
-        <div id="questions">
-            <p id="Currentquestion">
-
-            </p>
-            <ul id="answers">
-
-            </ul>
-            <div id="buttons">
-                <button id="submit" class="disabled">Submit</button>
-                <button id="next" class="disabled">Next</button>
-            </div>
-        </div>
-
+      </div>
     </div>
     <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close"><a href="index.html"> &times;</a></span>
-            <h3>Weldone</h3>
-            <p id="modalContent"></p>
-            <p><a href="quiz.html">Take test again</a></p>
-            <p><a href="index.html">Go back</a></p>
-        </div>
-
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close"><a href="index.html"> &times;</a></span>
+        <h3>Weldone</h3>
+        <p id="modalContent"></p>
+        <p><a href="quiz.html">Take test again</a></p>
+        <p><a href="index.html">Go back</a></p>
+      </div>
     </div>
-
 
     <script src="index.js"></script>
     <script>
-        let next = document.getElementById("next"); //next button selector
-        let submitAnswer = document.getElementById("submit"); //submit button selector
-        let numOfQuestions = document.getElementById("numOfQuestion"); //number of questions span selector
-        let correctDisplay = document.getElementById("counter"); // number of correct answer span selector
-        let span = document.getElementsByClassName("close")[0]; //modal close button selector
-        let modal = document.getElementById("myModal"); // modal elemnent selector
-        let modalContent = document.getElementById("modalContent"); //modal content selectore
-        correctAnswer = getCorrectAnswer(questions, currentIndex); //stores the current questions correct answer
-        displayQuestion(questions, currentIndex); //displays the first question
-        numOfQuestions.textContent = questionsLeft; //displayes the questions left
-        span.onclick = function () {
-            modal.style.display = "none";
+      let next = document.getElementById("next"); //next button selector
+      let submitAnswer = document.getElementById("submit"); //submit button selector
+      let numOfQuestions = document.getElementById("numOfQuestion"); //number of questions span selector
+      let correctDisplay = document.getElementById("counter"); // number of correct answer span selector
+      let span = document.getElementsByClassName("close")[0]; //modal close button selector
+      let modal = document.getElementById("myModal"); // modal elemnent selector
+      let modalContent = document.getElementById("modalContent"); //modal content selectore
+      correctAnswer = getCorrectAnswer(questions, currentIndex); //stores the current questions correct answer
+      displayQuestion(questions, currentIndex); //displays the first question
+      numOfQuestions.textContent = questionsLeft; //displayes the questions left
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      var timer = setInterval(() => {
+        countDownTime(timediff);
+        timediff -= 1000;
+      }, 1000);
+      setTimeout(function () {
+        clearInterval(timer);
+        eventFire(next, 'click');
+      }, 61000);
+
+      next.addEventListener("click", function (e) {
+        e.preventDefault();
+      
+        timediff = getTimeDiff();
+        timer = setInterval(() => {
+          countDownTime(timediff);
+          timediff -= 1000;
+        }, 1000);
+        setTimeout(function () {
+          clearInterval(timer);
+          autoNext()
+        }, 61000);
+        if (answered) {
+          questionsLeft--;
+          numOfQuestions.textContent = questionsLeft;
+          next.classList.add("disabled");
+          submitAnswer.classList.add("disabled");
+          submitAnswer.setAttribute('disabled',true)
+          next.setAttribute('disabled',true)
+          currentIndex++;
+          if (currentIndex >= questions.length) {
+            resetgame();
+          }
+          displayQuestion(questions, currentIndex);
+          correctAnswer = getCorrectAnswer(questions, currentIndex);
+          answered = false;
         }
-        next.addEventListener('click', function (e) {
-            e.preventDefault();
-            if (answered) {
-                questionsLeft--
-                numOfQuestions.textContent = questionsLeft
-                next.classList.add('disabled')
-                submitAnswer.classList.add('disabled')
-                currentIndex++;
-                if (currentIndex >= questions.length) {
-                    resetgame()
-                }
-                displayQuestion(questions, currentIndex);
-                correctAnswer = getCorrectAnswer(questions, currentIndex);
-                answered = false;
-            }
+      });
 
-        })
-
-        submitAnswer.addEventListener('click', function (e) {
-            e.preventDefault();
-            if (selectedAnswer) {
-                next.classList.remove('disabled')
-                if (selectedAnswer === correctAnswer) {
-                    numberOfCorrect++
-                    correctDisplay.textContent = numberOfCorrect;
-                } else {
-                    answerElement.classList.add('incorrect')
-                }
-                displayCorrectAnswer(correctAnswer)
-                answered = true;
-                selectedAnswer = false;
-            }
-        })
+      submitAnswer.addEventListener("click", function (e) {
+        e.preventDefault();
+        clearInterval(timer);
+        if (selectedAnswer) {
+          next.classList.remove("disabled");
+          next.removeAttribute('disabled')
+          if (selectedAnswer === correctAnswer) {
+            numberOfCorrect++;
+            correctDisplay.textContent = numberOfCorrect;
+          } else {
+            answerElement.classList.add("incorrect");
+          }
+          displayCorrectAnswer(correctAnswer);
+          answered = true;
+          selectedAnswer = false;
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>
