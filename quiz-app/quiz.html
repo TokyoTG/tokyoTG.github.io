@@ -58,20 +58,24 @@
         countDownTime(timediff);
         timediff -= 1000;
       }, 1000);
-      setTimeout(function () {
+    var timerOut =  setTimeout(function () {
         clearInterval(timer);
+        clearTimeout(timerOut)
         eventFire(next, 'click');
       }, 31000);
 
       next.addEventListener("click", function (e) {
         e.preventDefault();
+        clearTimeout(timerOut)
+        clearInterval(timer);
         timediff = getTimeDiff();
         timer = setInterval(() => {
           countDownTime(timediff);
           timediff -= 1000;
         }, 1000);
-        setTimeout(function () {
+    timerOut =    setTimeout(function () {
           clearInterval(timer);
+          clearTimeout(timerOut)
           eventFire(next, 'click');
         }, 31000);
         // if (answered) {
@@ -83,6 +87,7 @@
           next.setAttribute('disabled',true)
           currentIndex++;
           if (currentIndex >= questions.length) {
+            clearTimeout(timerOut)
             clearInterval(timer);
             resetgame();
           }
