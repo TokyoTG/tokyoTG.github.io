@@ -61,11 +61,10 @@
       setTimeout(function () {
         clearInterval(timer);
         eventFire(next, 'click');
-      }, 61000);
+      }, 31000);
 
       next.addEventListener("click", function (e) {
         e.preventDefault();
-      
         timediff = getTimeDiff();
         timer = setInterval(() => {
           countDownTime(timediff);
@@ -73,9 +72,9 @@
         }, 1000);
         setTimeout(function () {
           clearInterval(timer);
-          autoNext()
-        }, 61000);
-        if (answered) {
+          eventFire(next, 'click');
+        }, 31000);
+        // if (answered) {
           questionsLeft--;
           numOfQuestions.textContent = questionsLeft;
           next.classList.add("disabled");
@@ -84,12 +83,13 @@
           next.setAttribute('disabled',true)
           currentIndex++;
           if (currentIndex >= questions.length) {
+            clearInterval(timer);
             resetgame();
           }
           displayQuestion(questions, currentIndex);
           correctAnswer = getCorrectAnswer(questions, currentIndex);
           answered = false;
-        }
+        // }
       });
 
       submitAnswer.addEventListener("click", function (e) {

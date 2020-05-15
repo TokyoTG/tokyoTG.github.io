@@ -105,7 +105,7 @@ function displayCorrectAnswer(correctAnswer) {
 //gets the answer the player selected
 function getAnswer() {
   submitAnswer.classList.remove("disabled");
-  submitAnswer.removeAttribute('disabled');
+  submitAnswer.removeAttribute("disabled");
   answerElement = selectAnswer();
   selectedAnswer = answerElement.textContent;
 }
@@ -114,6 +114,9 @@ function getAnswer() {
 function resetgame() {
   correctDisplay.textContent = numberOfCorrect;
   modal.style.display = "block";
+  let timeDisplay = document.getElementById("timer");
+  timeDisplay.innerHTML = "00:00";
+ 
   modalContent.textContent = `You Score: ${numberOfCorrect}`;
   currentIndex = 0;
   numberOfCorrect = 0;
@@ -122,41 +125,31 @@ function resetgame() {
   numOfQuestions.textContent = questionsLeft;
 }
 
-function countDownTime(timediff){ 
+function countDownTime(timediff) {
   var minutes = Math.floor((timediff % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((timediff % (1000 * 60)) / 1000);
-  let timeDisplay = document.getElementById('timer');
-  timeDisplay.innerHTML = '';
-  timeDisplay.innerHTML = `${minutes}:${seconds}`
-
+  let timeDisplay = document.getElementById("timer");
+  timeDisplay.innerHTML = "";
+  timeDisplay.innerHTML = `${minutes}:${seconds}`;
 }
-function getTimeDiff(){
+function getTimeDiff() {
   let startTime = new Date();
-  let stopTime = startTime.getTime() + 60000 ;
+  let stopTime = startTime.getTime() + 30000;
   let timediff = stopTime - startTime;
-  return timediff
+  return timediff;
 }
 
- let timediff = getTimeDiff();
+let timediff = getTimeDiff();
 
-function displayTime(){
-  clearInterval()
-
-  setTimeout(function(){
-    clearInterval(timer)
-  },61000)
-
+function clearLoop() {
+  clearInterval(timer);
 }
 
-function clearLoop(){
-  clearInterval(timer)
-}
-
-function eventFire(el, etype){
+function eventFire(el, etype) {
   if (el.fireEvent) {
-    el.fireEvent('on' + etype);
+    el.fireEvent("on" + etype);
   } else {
-    var evObj = document.createEvent('Events');
+    var evObj = document.createEvent("Events");
     evObj.initEvent(etype, true, false);
     el.dispatchEvent(evObj);
   }
