@@ -12,6 +12,7 @@
         <p id="latlng"></p>
     </div>
     <script>
+        handlePermission()
         let latlng = document.getElementById('latlng');
         let options = {
             enableHighAccuracy: false,
@@ -21,8 +22,31 @@
         let id = navigator.geolocation.watchPosition(pos => {
             latlng.innerHTML = pos.coords.latitude + ", " + pos.coords.longitude;
         }, err => {
-            alert('please turn on your device gps')
+
+            alert(err.message)
         }, options)
+
+        function handlePermission() {
+            navigator.permissions.query({
+                name: 'geolocation'
+            }).then(function (result) {
+                if (result.state == 'granted') {
+                    report(result.state);
+                } else if (result.state == 'prompt') {
+                    report(result.state);
+                } else if (result.state == 'denied') {
+                    report(result.state);
+                    geoBtn.style.display = 'inline';
+                }
+                result.onchange = function () {
+                    report(result.state);
+                }
+            });
+        }
+
+        function report(state) {
+            console.log('Permission ' + state);
+        }
     </script>
 </body>
 
