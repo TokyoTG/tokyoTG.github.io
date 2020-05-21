@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <div>
+        <p id="latlng"></p>
+    </div>
+    <script>
+        let latlng = document.getElementById('latlng');
+        navigator.geolocation.watchPosition(pos => {
+            latlng.innerHTML = pos.coords.latitude + ", " + pos.coords.longitude;
+        }, err => {
+            alert(err)
+        })
+    </script>
+</body>
+
+</html>
