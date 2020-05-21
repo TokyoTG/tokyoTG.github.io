@@ -13,11 +13,16 @@
     </div>
     <script>
         let latlng = document.getElementById('latlng');
-        navigator.geolocation.watchPosition(pos => {
+        let options = {
+            enableHighAccuracy: false,
+            timeout: 5000,
+            maximumAge: 0
+        };
+        let id = navigator.geolocation.watchPosition(pos => {
             latlng.innerHTML = pos.coords.latitude + ", " + pos.coords.longitude;
         }, err => {
-            alert(err)
-        })
+            alert('please turn on your device gps')
+        }, options)
     </script>
 </body>
 
