@@ -187,8 +187,7 @@ body {
   text-align: center;
   font-family: "Roboto", sans-serif;
 }
-#bronze p,
-#gold p {
+.per {
   color: #d2d2d2;
 }
 
@@ -466,5 +465,16 @@ body {
     padding: 20px;
     display: flex;
     justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  #plans-details .head {
+    font-size: 0.9em;
+  }
+  .bronze-plan,
+  .silver-plan,
+  .gold-plan {
+    font-size: 0.8em;
   }
 }
